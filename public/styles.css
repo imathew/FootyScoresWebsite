@@ -1,0 +1,323 @@
+:root {
+	--base-font-size: 16px;
+	--bg-color: #f5f5f5;
+	--hover-bg-color: #ebebeb;
+	--monospace-font: monospace;
+	--primary-font: Arial, sans-serif;
+	--secondary-font: cursive;
+	--text-color: #333;
+	--color-blues: #001e2f;
+	--color-bombers: #c90527;
+	--color-cats: #003d75;
+	--color-crows: #1d5d8c;
+	--color-demons: #051e3f;
+	--color-dockers: #331c54;
+	--color-dogs: #003c8e;
+	--color-eagles: #005daa;
+	--color-giants: #e06900;
+	--color-hawks: #7b3d00;
+	--color-kangaroos: #003ca0;
+	--color-lions: #cc0c3f;
+	--color-magpies: #000;
+	--color-power: #007a92;
+	--color-saints: #ff1e3e;
+	--color-suns: #e65300;
+	--color-swans: #cc0000;
+	--color-tigers: #cba117 ;
+}
+
+body {
+	background-color: var(--bg-color);
+	font-family: var(--primary-font);
+	font-size: var(--base-font-size);
+	margin: 0;
+	padding: 0;
+	color: var(--text-color);
+	white-space: nowrap;
+}
+
+h1 {
+	font: bold 1.2em var(--secondary-font);
+	margin: 0.3125em 0 0;
+	text-align: center;
+}
+
+h1.refresh-button {
+	cursor: pointer;
+	user-select: none;
+}
+
+main {
+	background-color: #fff;
+	box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.1);
+	margin: 0 auto;
+	max-width: 50em;
+	overflow-x: auto;
+}
+
+table {
+	border-collapse: collapse;
+	margin-bottom: 1.25em;
+	width: 100%;
+}
+
+tbody tr:hover {
+	background-color: var(--hover-bg-color);
+}
+
+td, th {
+	padding: 0.35em;
+	text-align: right;
+}
+
+td:first-child, th:first-child {
+	padding-left: 0.85em;
+}
+
+td:last-child, th:last-child {
+	padding-right: 0.85em;
+}
+
+th.stat_head {
+	width: 4%;
+}
+
+thead {
+	background-color: var(--bg-color);
+}
+
+.blank_header, .blank_header td {
+	background-color: #fff;
+}
+
+.cache-expiration {
+	/*display: none;*/
+}
+
+.loading {
+	font-family: var(--secondary-font);
+	margin: 0.6em;
+	text-align: center;
+}
+
+.match_header {
+	font-size: 0.85em;
+}
+
+.match_header td {
+	color: #fafafa;
+	text-align: left;
+}
+
+.match_header.blues {
+	background-color: var(--color-blues);
+}
+
+.match_header.bombers {
+	background-color: var(--color-bombers);
+}
+
+.match_header.cats {
+	background-color: var(--color-cats);
+}
+
+.match_header.crows {
+	background-color: var(--color-crows);
+}
+
+.match_header.demons {
+	background-color: var(--color-demons);
+}
+
+.match_header.dockers {
+	background-color: var(--color-dockers);
+}
+
+.match_header.dogs {
+	background-color: var(--color-dogs);
+}
+
+.match_header.eagles {
+	background-color: var(--color-eagles);
+}
+
+.match_header.giants {
+	background-color: var(--color-giants);
+}
+
+.match_header.hawks {
+	background-color: var(--color-hawks);
+}
+
+.match_header.kangaroos {
+	background-color: var(--color-kangaroos);
+}
+
+.match_header.lions {
+	background-color: var(--color-lions);
+}
+
+.match_header.magpies {
+	background-color: var(--color-magpies);
+}
+
+.match_header.power {
+	background-color: var(--color-power);
+}
+
+.match_header.saints {
+	background-color: var(--color-saints);
+}
+
+.match_header.suns {
+	background-color: var(--color-suns);
+}
+
+.match_header.swans {
+	background-color: var(--color-swans);
+}
+
+.match_header.tigers {
+	background-color: var(--color-tigers);
+}
+
+.matchtime {
+	margin-left: 1em;
+}
+
+.matchtime, .totalscore, .venuename {
+	font-family: var(--monospace-font);
+}
+
+.minion {
+	text-align: center;
+}
+
+.playername, .playerteam {
+	text-align: left;
+}
+
+.playername.long {
+	font-stretch: condensed;
+}
+
+.playerteam, .stats_header {
+	font-family: var(--monospace-font);
+	font-size: 0.85em;
+	font-weight: bold;
+}
+
+.playerteam.blues {
+	color: var(--color-blues);
+}
+
+.playerteam.bombers {
+	color: var(--color-bombers);
+}
+
+.playerteam.cats {
+	color: var(--color-cats);
+}
+
+.playerteam.crows {
+	color: var(--color-crows);
+}
+
+.playerteam.demons {
+	color: var(--color-demons);
+}
+
+.playerteam.dockers {
+	color: var(--color-dockers);
+}
+
+.playerteam.dogs {
+	color: var(--color-dogs);
+}
+
+.playerteam.eagles {
+	color: var(--color-eagles);
+}
+
+.playerteam.giants {
+	color: var(--color-giants);
+}
+
+.playerteam.hawks {
+	color: var(--color-hawks);
+}
+
+.playerteam.kangaroos {
+	color: var(--color-kangaroos);
+}
+
+.playerteam.lions {
+	color: var(--color-lions);
+}
+
+.playerteam.magpies {
+	color: var(--color-magpies);
+}
+
+.playerteam.power {
+	color: var(--color-power);
+}
+
+.playerteam.saints {
+	color: var(--color-saints);
+}
+
+.playerteam.suns {
+	color: var(--color-suns);
+}
+
+.playerteam.swans {
+	color: var(--color-swans);
+}
+
+.playerteam.tigers {
+	color: var(--color-tigers);
+}
+
+.pos {
+	font: 0.85em var(--monospace-font);
+}
+
+.pos, .pos_head {
+	text-align: left;
+	padding-right: 0;
+}
+
+.stat, .tog, .pos {
+	color: #666;
+}
+
+.stats_row:nth-child(even) {
+	background-color: var(--bg-color);
+}
+
+.stats_row:hover {
+	background-color: var(--hover-bg-color);
+}
+
+.teamname {
+	font-weight: bold;
+	min-width: 90px;
+	display: inline-block;
+}
+
+.teamname.home {
+		text-align: right;
+}
+
+.teamname, .totalscore {
+	font-size: 1.2em;
+}
+
+.totalscore.away {
+	margin: 0 0.5em 0 0;
+}
+
+.totalscore.home {
+	margin: 0 0 0 0.5em;
+}
