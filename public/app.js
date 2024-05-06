@@ -32,7 +32,7 @@ async function fetchData(url, cacheKey, cacheDuration) {
 
 // Function to fetch the player scores HTML from the Azure Function
 async function fetchPlayerScoresHtml() {
-	const url = 'http://footy.dosmac.win/api/PlayerScores';
+	const url = 'https://footyscores.azurewebsites.net/api/PlayerScores';
 	const cacheKey = 'playerScoresHtml';
 	const cacheDuration = 30000; // Cache locally for 30 seconds
 	

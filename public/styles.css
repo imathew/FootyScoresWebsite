@@ -8,11 +8,11 @@
 	--text-color: #333;
 	--color-blues: #001e2f;
 	--color-bombers: #c90527;
+	--color-bulldogs: #003c8e;
 	--color-cats: #003d75;
 	--color-crows: #1d5d8c;
 	--color-demons: #051e3f;
 	--color-dockers: #331c54;
-	--color-dogs: #003c8e;
 	--color-eagles: #005daa;
 	--color-giants: #e06900;
 	--color-hawks: #7b3d00;
@@ -24,6 +24,7 @@
 	--color-suns: #e65300;
 	--color-swans: #cc0000;
 	--color-tigers: #cba117 ;
+	--color-unknown: #666;
 }
 
 body {
@@ -133,8 +134,8 @@ thead {
 	background-color: var(--color-dockers);
 }
 
-.match_header.dogs {
-	background-color: var(--color-dogs);
+.match_header.bulldogs {
+	background-color: var(--color-bulldogs);
 }
 
 .match_header.eagles {
@@ -179,6 +180,10 @@ thead {
 
 .match_header.tigers {
 	background-color: var(--color-tigers);
+}
+
+.match_header.unknown {
+	background-color: var(--color-unknown);
 }
 
 .matchtime {
@@ -277,6 +282,10 @@ thead {
 
 .playerteam.tigers {
 	color: var(--color-tigers);
+}
+
+.playerteam.unknown {
+	color: var(--color-unknown);
 }
 
 .pos {
