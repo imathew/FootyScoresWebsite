@@ -65,7 +65,7 @@ async function fetchPlayerScoresHtml() {
 		: 'https://footyscores-test.azurewebsites.net/api/PlayerScores';
 
 	const cacheKey = 'playerScoresHtml';
-	const cacheDuration = 0; // Set an appropriate cache duration if needed
+	const cacheDuration = 30000; // 30 seconds client side
 
 	const loadingElement = document.querySelector('#playerScores .loading');
 	if (loadingElement) {
