@@ -21,6 +21,13 @@ jobs:
           submodules: true
           lfs: false
 
+      - name: HTML/CSS/JS Minifier
+        uses: docker://devatherock/minify-js:3.1.0
+        with:
+          directory: 'src'
+          output: 'public'
+          add_suffix: false
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
