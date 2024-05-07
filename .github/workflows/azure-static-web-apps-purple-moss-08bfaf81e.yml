@@ -4,12 +4,11 @@ on:
   push:
     branches:
       - main
-      - preview/*
+      - test
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
-      - preview/*
 
 jobs:
   build_and_deploy_job:
@@ -32,7 +31,7 @@ jobs:
           app_location: "/public"
           api_location: ""
           output_location: ""
-          preview_branch: "${{ github.ref }}"
+          production_branch: "main"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'

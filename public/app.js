@@ -60,9 +60,9 @@ async function decompressData(compressedData) {
 }
 
 async function fetchPlayerScoresHtml() {
-	const functionEndpoint = window.location.hostname === 'footy-test.dosmac.win'
-		? 'https://footyscores-test.azurewebsites.net/api/PlayerScores'
-		: 'https://footyscores.azurewebsites.net/api/PlayerScores';
+	const functionEndpoint = window.location.hostname === 'footy.dosmac.win'
+		? 'https://footyscores.azurewebsites.net/api/PlayerScores'
+		: 'https://footyscores-test.azurewebsites.net/api/PlayerScores';
 
 	const cacheKey = 'playerScoresHtml';
 	const cacheDuration = 0; // Set an appropriate cache duration if needed
