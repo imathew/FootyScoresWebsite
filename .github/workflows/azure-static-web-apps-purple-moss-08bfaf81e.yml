@@ -26,6 +26,7 @@ jobs:
         with:
           directory: 'src'
           output: 'public'
+          add_suffix: false
 
       - name: Build And Deploy
         id: builddeploy
