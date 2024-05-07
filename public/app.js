@@ -1,75 +1,101 @@
-// Function to fetch data from the Azure Function API
 async function fetchData(url, cacheKey, cacheDuration) {
-	// Check if the data is cached in the browser's storage
-	const cachedData = localStorage.getItem(cacheKey);
-	const cachedTime = localStorage.getItem(`${cacheKey}_time`);
-	
-	if (cachedData && cachedTime) {
-		const currentTime = new Date().getTime();
-		const elapsedTime = currentTime - parseInt(cachedTime, 10);
-		
-		if (elapsedTime < cacheDuration) {
-			// If the cached data is still valid, return it
+	try {
+		const cachedData = localStorage.getItem(cacheKey);
+		const cachedTime = localStorage.getItem(`${cacheKey}_time`);
+
+		if (cachedData && cachedTime && (new Date().getTime() - parseInt(cachedTime, 10)) < cacheDuration) {
 			return JSON.parse(cachedData);
 		}
+
+		const response = await fetch(url);
+		if (!response.ok) {
+			throw new Error(`HTTP error! status: ${response.status}`);
+		}
+
+		const base64CompressedData = await response.text();
+		const compressedData = Uint8Array.from(atob(base64CompressedData), c => c.charCodeAt(0));
+		const decompressedData = await decompressData(compressedData);
+
+		try {
+			localStorage.setItem(cacheKey, JSON.stringify(decompressedData));
+			localStorage.setItem(`${cacheKey}_time`, new Date().getTime().toString());
+		} catch (error) {
+			console.error('Error storing data in localStorage:', error);
+		}
+
+		return decompressedData;
+	} catch (error) {
+		console.error('Error fetching data:', error);
+		throw error;
 	}
-	
-	// If not cached or cache expired, make a request to the Azure Function API
-	const response = await fetch(url);
-	
-	if (!response.ok) {
-		throw new Error(`HTTP error! status: ${response.status}`);
-	}
-	
-	const data = await response.text();
-	
-	// Cache the fetched data in the browser's storage
-	localStorage.setItem(cacheKey, JSON.stringify(data));
-	localStorage.setItem(`${cacheKey}_time`, new Date().getTime().toString());
-	
-	return data;
 }
 
-// Function to fetch the player scores HTML from the Azure Function
+async function decompressData(compressedData) {
+	const decompressorStream = new DecompressionStream('gzip');
+	const writer = decompressorStream.writable.getWriter();
+	writer.write(compressedData);
+	writer.close();
+
+	const decompressedChunks = [];
+	const reader = decompressorStream.readable.getReader();
+	let totalSize = 0;
+
+	while (true) {
+		const { done, value } = await reader.read();
+		if (done) {
+			break;
+		}
+		decompressedChunks.push(value);
+		totalSize += value.byteLength;
+	}
+
+	const concatenated = new Uint8Array(totalSize);
+	let offset = 0;
+	for (const chunk of decompressedChunks) {
+		concatenated.set(chunk, offset);
+		offset += chunk.byteLength;
+	}
+
+	return new TextDecoder().decode(concatenated);
+}
+
 async function fetchPlayerScoresHtml() {
-	const url = 'https://footyscores.azurewebsites.net/api/PlayerScores';
+	const functionEndpoint = window.location.hostname === 'footy-test.dosmac.win'
+		? 'https://footyscores-test.azurewebsites.net/api/PlayerScores'
+		: 'https://footyscores.azurewebsites.net/api/PlayerScores';
+
 	const cacheKey = 'playerScoresHtml';
-	const cacheDuration = 30000; // Cache locally for 30 seconds
-	
-	// Show the loading message
+	const cacheDuration = 0; // Set an appropriate cache duration if needed
+
 	const loadingElement = document.querySelector('#playerScores .loading');
 	if (loadingElement) {
 		loadingElement.style.display = 'block';
 	}
-	
+
 	try {
-		const html = await fetchData(url, cacheKey, cacheDuration);
-		document.getElementById('playerScores').innerHTML = html;
+		const playerScoresHtml = await fetchData(functionEndpoint, cacheKey, cacheDuration);
+		document.getElementById('playerScores').innerHTML = playerScoresHtml;
 	} catch (error) {
 		console.error('Error fetching player scores:', error);
 		document.getElementById('playerScores').innerHTML = '<p class="loading">Oh no. Better luck next time.</p>';
 	}
-	
-	// Hide the loading message
+
 	if (loadingElement) {
 		loadingElement.style.display = 'none';
 	}
 }
 
-// Function to handle the refresh button click
 function handleRefreshClick(event) {
 	if (event.target.tagName === 'H1') {
-		// Clear the cached data
-		localStorage.removeItem('playerScoresHtml');
-		localStorage.removeItem('playerScoresHtml_time');
-		
-		// Fetch the latest data
+		try {
+			localStorage.removeItem('playerScoresHtml');
+			localStorage.removeItem('playerScoresHtml_time');
+		} catch (error) {
+			console.error('Error removing data from localStorage:', error);
+		}
 		fetchPlayerScoresHtml();
 	}
 }
 
-// Call the fetchPlayerScoresHtml function when the page loads
 window.addEventListener('load', fetchPlayerScoresHtml);
-
-// Attach the click event listener to the playerScores div
 document.getElementById('playerScores').addEventListener('click', handleRefreshClick);
