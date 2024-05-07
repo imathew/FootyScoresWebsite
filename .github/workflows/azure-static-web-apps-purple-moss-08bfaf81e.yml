@@ -21,26 +21,11 @@ jobs:
           submodules: true
           lfs: false
 
-      - name: Minify HTML
-        uses: tdewolff/minify-action@v2
+      - name: HTML/CSS/JS Minifier
+        uses: docker://devatherock/minify-js:3.1.0
         with:
-          file: 'index.html'
-          output: 'public/index.html'
-          type: 'html'
-      
-      - name: Minify CSS
-        uses: tdewolff/minify-action@v2
-        with:
-          file: 'styles.css'
-          output: 'public/styles.css'
-          type: 'css'
-      
-      - name: Minify JavaScript
-        uses: tdewolff/minify-action@v2
-        with:
-          file: 'app.js'
-          output: 'public/app.js'
-          type: 'js'
+          directory: 'src'
+          output: 'public'
 
       - name: Build And Deploy
         id: builddeploy
