@@ -5,26 +5,26 @@
 	--monospace-font: monospace;
 	--primary-font: Arial, sans-serif;
 	--secondary-font: cursive;
-	--text-color: #333;
-	--color-blues: #001a29;
-	--color-bombers: #b8041f;
-	--color-bulldogs: #00348e;
-	--color-cats: #00203c;
-	--color-crows: #081d36;
-	--color-demons: #05172b;
-	--color-dockers: #2c184a;
-	--color-eagles: #b37500;
-	--color-giants: #c95c00;
-	--color-hawks: #532a1c;
-	--color-kangaroos: #003688;
-	--color-lions: #7a0038;
+	--text-color: #333333;
+	--color-blues: #001e2f;
+	--color-bombers: #a60000;
+	--color-bulldogs: #0039a6;
+	--color-cats: #002244;
+	--color-crows: #0a2240;
+	--color-demons: #061a33;
+	--color-dockers: #331c54;
+	--color-eagles: #b07d00;
+	--color-giants: #d86000;
+	--color-hawks: #512b1b;
+	--color-kangaroos: #003ca0;
+	--color-lions: #8b0042;
 	--color-magpies: #000000;
-	--color-power: #006c81;
-	--color-saints: #bc111e;
-	--color-suns: #b0241c;
-	--color-swans: #b80f13;
-	--color-tigers: #c9a500;
-	--color-unknown: #666;
+	--color-power: #007a91;
+	--color-saints: #c00000;
+	--color-suns: #b32000;
+	--color-swans: #c00000;
+	--color-tigers: #c7a000;
+	--color-unknown: #666666;
 }
 
 body {
