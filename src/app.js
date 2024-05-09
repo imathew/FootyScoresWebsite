@@ -88,5 +88,20 @@ function handleRefreshClick(event) {
     }
 }
 
+function checkTableClipping() {
+    const mainElement = document.querySelector('main');
+    const tableElement = mainElement.querySelector('table');
+
+    if (tableElement) {
+        if (tableElement.offsetWidth > mainElement.offsetWidth) {
+            mainElement.classList.add('clipped');
+        } else {
+            mainElement.classList.remove('clipped');
+        }
+    }
+}
+
 window.addEventListener('load', fetchPlayerScoresHtml);
+window.addEventListener('load', checkTableClipping);
+window.addEventListener('resize', checkTableClipping);
 document.getElementById('playerScores').addEventListener('click', handleRefreshClick);
