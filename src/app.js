@@ -78,6 +78,7 @@ async function fetchPlayerScoresHtml() {
     }
 
     loadingElement.style.display = 'none';
+    checkTableClipping();
 }
 
 function handleRefreshClick(event) {
@@ -102,6 +103,5 @@ function checkTableClipping() {
 }
 
 window.addEventListener('load', fetchPlayerScoresHtml);
-window.addEventListener('load', checkTableClipping);
 window.addEventListener('resize', checkTableClipping);
 document.getElementById('playerScores').addEventListener('click', handleRefreshClick);
