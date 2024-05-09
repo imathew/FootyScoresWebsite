@@ -67,7 +67,10 @@ async function fetchPlayerScoresHtml() {
     const cacheDuration = 0; // undo for testing
 
     const loadingElement = document.querySelector('#playerScores .loading');
-    loadingElement.style.display = 'block';
+
+    if (loadingElement) {
+        loadingElement.style.display = 'block';
+    }
 
     try {
         const playerScoresHtml = await fetchData(functionEndpoint, cacheKey, cacheDuration, queryParams);
@@ -77,7 +80,9 @@ async function fetchPlayerScoresHtml() {
         document.getElementById('playerScores').innerHTML = '<p class="loading">Oh no. Better luck next time.</p>';
     }
 
-    loadingElement.style.display = 'none';
+    if (loadingElement) {
+        loadingElement.style.display = 'none';
+    }
     checkTableClipping();
 }
 
