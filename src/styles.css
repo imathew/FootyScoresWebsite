@@ -1,7 +1,6 @@
 :root {
 	--base-font-size: 16px;
 	--bg-color: #f5f5f5;
-	--hover-bg-color: #ebebeb;
 	--monospace-font: monospace;
 	--primary-font: Arial, sans-serif;
 	--secondary-font: cursive;
@@ -44,7 +43,7 @@ h1 {
 	text-align: center;
 }
 
-h1.refresh-button {
+main {
 	cursor: pointer;
 	user-select: none;
 }
@@ -73,10 +72,6 @@ table {
 	border-collapse: collapse;
 	margin-bottom: 1.25em;
 	width: 100%;
-}
-
-tbody tr:hover {
-	background-color: var(--hover-bg-color);
 }
 
 td, th {
@@ -327,10 +322,6 @@ thead {
 
 .stats_row:nth-child(odd) {
 	background-color: var(--bg-color);
-}
-
-.stats_row:hover {
-	background-color: var(--hover-bg-color);
 }
 
 .teamname {
