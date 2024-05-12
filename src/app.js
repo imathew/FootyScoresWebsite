@@ -86,12 +86,10 @@ async function fetchPlayerScoresHtml() {
     checkTableClipping();
 }
 
-function handleRefreshClick(event) {
-    if (event.target.tagName === 'H1') {
-        localStorage.removeItem('playerScoresHtml');
-        localStorage.removeItem('playerScoresHtml_time');
-        fetchPlayerScoresHtml();
-    }
+function handleRefreshClick() {
+    localStorage.removeItem('playerScoresHtml');
+    localStorage.removeItem('playerScoresHtml_time');
+    fetchPlayerScoresHtml();
 }
 
 function checkTableClipping() {
@@ -109,4 +107,4 @@ function checkTableClipping() {
 
 window.addEventListener('load', fetchPlayerScoresHtml);
 window.addEventListener('resize', checkTableClipping);
-document.getElementById('playerScores').addEventListener('click', handleRefreshClick);
+document.getElementsByTagName('main')[0].addEventListener('click', handleRefreshClick);
