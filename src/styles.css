@@ -214,6 +214,10 @@ thead {
 	color: #ffffff;
 }
 
+.pending {
+	text-align: left;
+}
+
 .playername, .playerteam {
 	text-align: left;
 }
