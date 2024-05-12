@@ -202,7 +202,7 @@ thead {
 }
 
 .matchtime {
-	margin-left: 1em;
+	margin-left: 2em;
 }
 
 .matchtime, .totalscore, .venuename {
@@ -331,7 +331,6 @@ thead {
 
 .teamname {
 	font-weight: bold;
-	min-width: 90px;
 	display: inline-block;
 }
 
