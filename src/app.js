@@ -64,7 +64,7 @@ async function fetchPlayerScoresHtml() {
     const functionEndpoint = `${hostUrlMap[Object.keys(hostUrlMap).find(key => window.location.hostname.includes(key))] || 'http://localhost:7188'}${apiPath}`;
     const queryParams = Object.fromEntries(new URLSearchParams(window.location.search));
     const cacheKey = 'playerScoresHtml';
-    const cacheDuration = 0; // undo for testing
+    const cacheDuration = 10000; // 10 seconds
 
     const loadingElement = document.querySelector('#playerScores .loading');
 
