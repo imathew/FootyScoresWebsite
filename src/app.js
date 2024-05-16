@@ -86,12 +86,6 @@ async function fetchPlayerScoresHtml() {
     checkTableClipping();
 }
 
-function handleRefreshClick() {
-    localStorage.removeItem('playerScoresHtml');
-    localStorage.removeItem('playerScoresHtml_time');
-    fetchPlayerScoresHtml();
-}
-
 function checkTableClipping() {
     const mainElement = document.querySelector('main');
     const tableElement = mainElement.querySelector('table');
@@ -107,4 +101,4 @@ function checkTableClipping() {
 
 window.addEventListener('load', fetchPlayerScoresHtml);
 window.addEventListener('resize', checkTableClipping);
-document.getElementsByTagName('main')[0].addEventListener('click', handleRefreshClick);
+document.getElementsByTagName('main')[0].addEventListener('click', fetchPlayerScoresHtml);
