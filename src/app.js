@@ -60,20 +60,23 @@ async function fetchPlayerScoresHtml() {
         'footy.dosmac.win': 'https://footyscores.azurewebsites.net',
         'azurestaticapps.net': 'https://footyscores-test.azurewebsites.net',
     };
-
     const functionEndpoint = `${hostUrlMap[Object.keys(hostUrlMap).find(key => window.location.hostname.includes(key))] || 'http://localhost:7188'}${apiPath}`;
     const queryParams = Object.fromEntries(new URLSearchParams(window.location.search));
     const cacheKey = 'playerScoresHtml';
     const cacheDuration = 10000; // 10 seconds
 
     const loadingElement = document.querySelector('#playerScores .loading');
-
     if (loadingElement) {
         loadingElement.style.display = 'block';
     }
 
     try {
-        const playerScoresHtml = await fetchData(functionEndpoint, cacheKey, cacheDuration, queryParams);
+        let playerScoresHtml;
+        if ('round' in queryParams || queryParams.fresh === '1') {
+            playerScoresHtml = await fetchData(functionEndpoint, cacheKey, 0, queryParams);
+        } else {
+            playerScoresHtml = await fetchData(functionEndpoint, cacheKey, cacheDuration, queryParams);
+        }
         document.getElementById('playerScores').innerHTML = playerScoresHtml;
     } catch (error) {
         console.error('Error fetching player scores:', error);
@@ -83,6 +86,7 @@ async function fetchPlayerScoresHtml() {
     if (loadingElement) {
         loadingElement.style.display = 'none';
     }
+
     checkTableClipping();
 }
 
