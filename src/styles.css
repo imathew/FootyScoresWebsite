@@ -99,6 +99,10 @@ thead {
 	background-color: var(--bg-color);
 }
 
+tr * {
+	vertical-align: middle;
+}
+
 .af, .matchtime, .playerteam, .pos, .stat, .stats_header, .tog, .totalscore, .venuename {
 	font-family: var(--monospace-font);
 }
