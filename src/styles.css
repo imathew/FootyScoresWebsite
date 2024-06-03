@@ -79,10 +79,6 @@ td, th {
 	text-align: right;
 }
 
-td:first-child, th:first-child {
-	padding-left: 0.85em;
-}
-
 td:last-child, th:last-child {
 	padding-right: 0.85em;
 }
@@ -99,8 +95,19 @@ thead {
 	background-color: var(--bg-color);
 }
 
+.af, .matchtime, .playerteam, .pos, .stat, .stats_header, .tog, .totalscore, .venuename {
+	font-family: var(--monospace-font);
+}
+
 .blank_header, .blank_header td {
 	background-color: #ffffff;
+}
+
+.coachAvatar img {
+	width: 1.16em;
+	height: 1.16em;
+	border-radius: 50%;
+	vertical-align: bottom;
 }
 
 .loading {
@@ -200,10 +207,6 @@ thead {
 	margin-left: 2em;
 }
 
-.matchtime, .totalscore, .venuename {
-	font-family: var(--monospace-font);
-}
-
 .minion {
 	text-align: center;
 	color: #ffffff;
@@ -222,7 +225,6 @@ thead {
 }
 
 .playerteam, .stats_header {
-	font-family: var(--monospace-font);
 	font-size: 0.85em;
 	font-weight: bold;
 }
@@ -253,10 +255,6 @@ thead {
 
 .playerteam.dockers {
 	color: var(--color-dockers);
-}
-
-.playerteam.dogs {
-	color: var(--color-dogs);
 }
 
 .playerteam.eagles {
@@ -307,7 +305,7 @@ thead {
 	color: var(--color-unknown);
 }
 
-.pos {
+.pos, .playerExtra {
 	font: 0.85em var(--monospace-font);
 }
 
@@ -324,6 +322,35 @@ thead {
 	background-color: var(--bg-color);
 }
 
+.stats_row.coach1 {
+	background-color: #E0F0E6;
+}
+
+.stats_row.coach2 {
+	background-color: #FFE6E6;
+}
+
+.stats_row.coach3 {
+	background-color: #E6F0FF;
+}
+
+.stats_row.coach4 {
+	background-color: #FFF8DC;
+}
+
+.stats_row.captain > .playername,
+.stats_row.vicecaptain > .playername {
+	font-weight: bold;
+}
+
+.stats_row.emergency > .playername {
+	font-style: italic;
+}
+
+.stats_row.benched > .playername {
+	text-decoration: line-through;
+}
+
 .teamname {
 	font-weight: bold;
 	display: inline-block;
@@ -331,6 +358,7 @@ thead {
 
 .teamname.home {
 	text-align: right;
+	padding-left: 0.35em;
 }
 
 .teamname, .totalscore {
