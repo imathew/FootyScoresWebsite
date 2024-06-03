@@ -87,7 +87,31 @@ async function fetchPlayerScoresHtml() {
         loadingElement.style.display = 'none';
     }
 
+    applyCoachClasses();
     checkTableClipping();
+}
+
+function applyCoachClasses() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const coachParam = urlParams.get('coach');
+
+    if (coachParam) {
+        const coachValues = coachParam.split(',');
+
+        coachValues.forEach((coachValue, index) => {
+            const coachClass = `coach${index + 1}`;
+
+            if (coachValue === '0') {
+                document.querySelectorAll('tr:not([data-coach])').forEach(row => {
+                    row.classList.add('coach', coachClass);
+                });
+            } else {
+                document.querySelectorAll(`tr[data-coach="${coachValue}"]`).forEach(row => {
+                    row.classList.add('coach', coachClass);
+                });
+            }
+        });
+    }
 }
 
 function checkTableClipping() {
