@@ -85,12 +85,12 @@ td, th {
 }
 
 td:first-child, th:first-child {
-	padding-left: 0.85em;
+	padding-left: 0.5em;
 	padding-right: 0;
 }
 
 td:last-child, th:last-child {
-	padding-right: 0.85em;
+	padding-right: 0.8em;
 }
 
 th {
