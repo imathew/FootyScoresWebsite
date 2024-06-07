@@ -54,7 +54,7 @@ main {
 }
 
 main {
-	background-color: #ffffff;
+	background-color: #fafafa;
 	box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.1);
 	margin: 0 auto;
 	max-width: 50em;
@@ -86,6 +86,7 @@ td, th {
 
 td:first-child, th:first-child {
 	padding-left: 0.85em;
+	padding-right: 0;
 }
 
 td:last-child, th:last-child {
@@ -113,7 +114,7 @@ tr * {
 }
 
 .blank_header, .blank_header td {
-	background-color: #ffffff;
+	background-color: #fafafa;
 }
 
 .coachAvatar img {
@@ -222,7 +223,7 @@ tr * {
 
 .minion {
 	text-align: center;
-	color: #ffffff;
+	color: #fafafa;
 }
 
 .pending {
@@ -337,9 +338,11 @@ tr * {
 	color: #666666;
 }
 
+/*
 .stats_row:nth-child(odd) {
 	background-color: var(--bg-color);
 }
+*/
 
 /*
 .stats_row.coach1 {
