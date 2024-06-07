@@ -88,28 +88,34 @@ async function fetchPlayerScoresHtml() {
     }
 
     applyCoachClasses();
+    addClickListeners();
     checkTableClipping();
 }
 
 function applyCoachClasses() {
     const urlParams = new URLSearchParams(window.location.search);
     const coachParam = urlParams.get('coach');
+    const tableElement = document.querySelector('table');
 
     if (coachParam) {
-        const coachValues = coachParam.split(',');
+        tableElement.classList.add('filtered');
 
+        const coachValues = coachParam.split(',');
         coachValues.forEach((coachValue, index) => {
             const coachClass = `coach${index + 1}`;
-
             if (coachValue === '0') {
-                document.querySelectorAll('tr:not([data-coach])').forEach(row => {
+                document.querySelectorAll('tr.stats_row:not([data-coach])').forEach(row => {
                     row.classList.add('coach', coachClass);
                 });
             } else {
-                document.querySelectorAll(`tr[data-coach="${coachValue}"]`).forEach(row => {
+                document.querySelectorAll(`tr.stats_row[data-coach="${coachValue}"]`).forEach(row => {
                     row.classList.add('coach', coachClass);
                 });
             }
+        });
+
+        document.querySelectorAll('tr.stats_row:not(.coach)').forEach(row => {
+            row.style.display = 'none';
         });
     }
 }
@@ -127,6 +133,12 @@ function checkTableClipping() {
     }
 }
 
+function addClickListeners() {
+    const reloadElements = document.querySelectorAll('tr.match_header, th.minion, td.playerteam, td.playername');
+    reloadElements.forEach(function (element) {
+        element.addEventListener('click', fetchPlayerScoresHtml);
+    });
+}
+
 window.addEventListener('load', fetchPlayerScoresHtml);
 window.addEventListener('resize', checkTableClipping);
-document.getElementsByTagName('main')[0].addEventListener('click', fetchPlayerScoresHtml);
