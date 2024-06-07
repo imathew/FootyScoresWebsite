@@ -88,6 +88,7 @@ async function fetchPlayerScoresHtml() {
     }
 
     applyCoachClasses();
+    addClickListeners();
     checkTableClipping();
 }
 
@@ -128,10 +129,12 @@ function checkTableClipping() {
     }
 }
 
+function addClickListeners() {
+    const reloadElements = document.querySelectorAll('tr.match_header, th.minion, td.playerteam, td.playername');
+    reloadElements.forEach(function (element) {
+        element.addEventListener('click', fetchPlayerScoresHtml);
+    });
+}
+
 window.addEventListener('load', fetchPlayerScoresHtml);
 window.addEventListener('resize', checkTableClipping);
-document.getElementsByTagName('main')[0].addEventListener('click', function (event) {
-    if (event.target.tagName !== 'A' && !event.target.classList.contains('coachAvatar')) {
-        fetchPlayerScoresHtml();
-    }
-});
