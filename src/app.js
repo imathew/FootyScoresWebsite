@@ -130,4 +130,8 @@ function checkTableClipping() {
 
 window.addEventListener('load', fetchPlayerScoresHtml);
 window.addEventListener('resize', checkTableClipping);
-document.getElementsByTagName('main')[0].addEventListener('click', fetchPlayerScoresHtml);
+document.getElementsByTagName('main')[0].addEventListener('click', function (event) {
+    if (event.target.tagName !== 'A') {
+        fetchPlayerScoresHtml();
+    }
+});

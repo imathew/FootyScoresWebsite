@@ -237,6 +237,12 @@ tr * {
 	font-stretch: condensed;
 }
 
+.playerteam img {
+	width: 1.365em;
+	height: 1.365em;
+	vertical-align: bottom;
+}
+
 .playerteam, .stats_header {
 	font-size: 0.85em;
 	font-weight: bold;
