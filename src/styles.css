@@ -330,6 +330,7 @@ tr * {
 	background-color: var(--bg-color);
 }
 
+/*
 .stats_row.coach1 {
 	background-color: #E0F0E6;
 }
@@ -345,6 +346,7 @@ tr * {
 .stats_row.coach4 {
 	background-color: #FFF8DC;
 }
+*/
 
 .stats_row.captain > .playername,
 .stats_row.vicecaptain > .playername {
