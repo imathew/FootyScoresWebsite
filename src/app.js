@@ -95,7 +95,11 @@ async function fetchPlayerScoresHtml() {
 function applyCoachClasses() {
     const urlParams = new URLSearchParams(window.location.search);
     const coachParam = urlParams.get('coach');
+    const tableElement = document.querySelector('table');
+
     if (coachParam) {
+        tableElement.classList.add('filtered');
+
         const coachValues = coachParam.split(',');
         coachValues.forEach((coachValue, index) => {
             const coachClass = `coach${index + 1}`;
