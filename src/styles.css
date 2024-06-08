@@ -6,6 +6,7 @@
 	--primary-font: Arial, sans-serif;
 	--secondary-font: cursive;
 	--text-color: #333333;
+	--sub-color: #990066;
 	--color-blues: #001e2f;
 	--color-bombers: #c90527;
 	--color-bulldogs: #0039a6;
@@ -233,6 +234,10 @@ tr * {
 
 .playername.long {
 	font-stretch: condensed;
+}
+
+.playername.medical_sub {
+	color: var(--sub-color)
 }
 
 .playerteam img {
