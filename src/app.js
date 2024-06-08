@@ -96,27 +96,35 @@ function applyCoachClasses() {
     const urlParams = new URLSearchParams(window.location.search);
     const coachParam = urlParams.get('coach');
     const tableElement = document.querySelector('table');
-
     if (coachParam) {
         tableElement.classList.add('filtered');
-
         const coachValues = coachParam.split(',');
-        coachValues.forEach((coachValue, index) => {
-            const coachClass = `coach${index + 1}`;
-            if (coachValue === '0') {
-                document.querySelectorAll('tr.stats_row:not([data-coach])').forEach(row => {
-                    row.classList.add('coach', coachClass);
-                });
-            } else {
-                document.querySelectorAll(`tr.stats_row[data-coach="${coachValue}"]`).forEach(row => {
-                    row.classList.add('coach', coachClass);
-                });
-            }
-        });
 
-        document.querySelectorAll('tr.stats_row:not(.coach)').forEach(row => {
-            row.style.display = 'none';
-        });
+        // if any value of coach is 1, ignore the rest and show all coached players
+        if (coachValues.includes('1')) {
+            document.querySelectorAll('tr.stats_row[data-coach]').forEach(row => {
+                row.classList.add('coach');
+            });
+            document.querySelectorAll('tr.stats_row:not([data-coach])').forEach(row => {
+                row.style.display = 'none';
+            });
+        } else {
+            coachValues.forEach((coachValue, index) => {
+                const coachClass = `coach${index + 1}`;
+                if (coachValue === '0') {
+                    document.querySelectorAll('tr.stats_row:not([data-coach])').forEach(row => {
+                        row.classList.add('coach', coachClass);
+                    });
+                } else {
+                    document.querySelectorAll(`tr.stats_row[data-coach="${coachValue}"]`).forEach(row => {
+                        row.classList.add('coach', coachClass);
+                    });
+                }
+            });
+            document.querySelectorAll('tr.stats_row:not(.coach)').forEach(row => {
+                row.style.display = 'none';
+            });
+        }
     }
 }
 
